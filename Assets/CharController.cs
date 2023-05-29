@@ -10,6 +10,7 @@ public class CharController : MonoBehaviour
     GameObject cher;
     float span = 1.0f;
     float delta = 0;
+    float threshold = 0.2f;
 
     Animator animator;
 
@@ -28,13 +29,24 @@ public class CharController : MonoBehaviour
         dir.y = Input.GetAxisRaw("Vertical");
         transform.position += dir.normalized * speed;
 
+        //アニメーション
+        if (Input.acceleration.y > this.threshold)
+        {
+            this.animator.SetTrigger("Left Trigger");
+        }
+
+        if (Input.acceleration.y > - this.threshold)
+        {
+            this.animator.SetTrigger("Rigth Trigger");
+        }
+
         // プレイヤーの位置
         Vector3 PlayerPos = this.cher.transform.position;
         transform.position = new Vector3(PlayerPos.x, PlayerPos.y, 0);
 
         this.delta += Time.deltaTime;
 
-        //クリックしたらGrassを投げる
+        //クリックしたらShotを打つ
         if (Input.GetMouseButtonDown(0))
         {
             if (this.delta > this.span)
@@ -44,6 +56,8 @@ public class CharController : MonoBehaviour
                 go.transform.position = new Vector3(PlayerPos.x, PlayerPos.y, 0);
             }
         }
+
+        this.animator.speed = speed / 2.0f;
     }
 
     //当たり判定

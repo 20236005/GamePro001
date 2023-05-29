@@ -38,10 +38,10 @@ public class GameDirecter : MonoBehaviour
 
         this.Timegaugi.GetComponent<Image>().fillAmount -= 0.0005f;
 
-        //if(this.Timegaugi )
-        //{
-        //    SceneManager.LoadScene("GameOverScene");
-        //}
+        if (this.Timegaugi.GetComponent<Image>().fillAmount == 0 )
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
     }
 
 
