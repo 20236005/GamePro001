@@ -16,7 +16,7 @@ public class GameDirecter : MonoBehaviour
         //Time_gauge‚Ìî•ñ‚ğæ“¾‚·‚é
         this.Timegaugi = GameObject.Find("Time_gauge");
         //Distance‚Ìî•ñ‚ğæ“¾‚·‚é
-        this.Distance = GameObject.Find("Distance"); 
+        this.Distance = GameObject.Find("Distance");
     }
     public void DecreaseTime()
     {
@@ -30,19 +30,16 @@ public class GameDirecter : MonoBehaviour
         this.Timegaugi.GetComponent<Image>().fillAmount += 0.025f;
     }
 
-
     void Update()
     {
-        this.distance += Time.deltaTime * 10;
+        this.distance += Time.deltaTime * 100;
         this.Distance.GetComponent<TextMeshProUGUI>().text = this.distance.ToString("F1");
 
-        this.Timegaugi.GetComponent<Image>().fillAmount -= 0.0005f;
+        this.Timegaugi.GetComponent<Image>().fillAmount -= 0.00020f;
 
         if (this.Timegaugi.GetComponent<Image>().fillAmount == 0 )
         {
             SceneManager.LoadScene("GameOverScene");
         }
     }
-
-
 }

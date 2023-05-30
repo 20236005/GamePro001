@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    float Speed = -0.30f;
+    float Speed = -0.10f;
     public GameObject MyShot;
     public GameObject MyChar;
     Animator animator;
@@ -32,13 +32,12 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.tag == "MyShot")
         {
             GameObject director = GameObject.Find("GameDirecter");
-            director.GetComponent<GameDirecter>().DecreaseTime2(); ;
+            director.GetComponent<GameDirecter>().DecreaseTime2(); 
             Destroy(gameObject);
         }
         if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }
-
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
@@ -8,9 +9,14 @@ public class CharController : MonoBehaviour
     public GameObject Myshot;
     public GameObject Enemy;
     GameObject cher;
-    float span = 1.0f;
+
+    float span = 0.25f;
     float delta = 0;
+
     float threshold = 0.2f;
+
+    float xLimit = 32.0f;
+    float yLimit = 13.0f;
 
     Animator animator;
 
@@ -24,10 +30,17 @@ public class CharController : MonoBehaviour
     {
         //移動
         Vector3 dir = Vector3.zero;
-        float speed = 0.250f;
+        float speed = 0.10f;
         dir.x = Input.GetAxisRaw("Horizontal");
         dir.y = Input.GetAxisRaw("Vertical");
         transform.position += dir.normalized * speed;
+
+
+        //移動制限
+        Vector3 creentPos = transform.position;
+        creentPos.x = Mathf.Clamp(creentPos.x, -xLimit, xLimit);
+        creentPos.y = Mathf.Clamp(creentPos.y, -yLimit, yLimit);
+        transform.position = creentPos;
 
         //アニメーション
         if (Input.acceleration.y > this.threshold)
@@ -57,7 +70,7 @@ public class CharController : MonoBehaviour
             }
         }
 
-        this.animator.speed = speed / 2.0f;
+            this.animator.speed = speed / 2.0f;
     }
 
     //当たり判定

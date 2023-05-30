@@ -5,12 +5,8 @@ using UnityEngine;
 public class MyShotController : MonoBehaviour
 {
     public GameObject Enemy;
-    float speed = 0.50f;
+    float speed = 0.30f;
 
-    void Start()
-    {
-        Application.targetFrameRate = 60;
-    }
 
     void Update()
     {
