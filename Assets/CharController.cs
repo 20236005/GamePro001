@@ -12,6 +12,7 @@ public class CharController : MonoBehaviour
 
     float span = 0.25f;
     float delta = 0;
+    float threshold = 0.2f;
 
     float threshold = 0.2f;
 
@@ -35,6 +36,7 @@ public class CharController : MonoBehaviour
         dir.y = Input.GetAxisRaw("Vertical");
         transform.position += dir.normalized * speed;
 
+<<<<<<< HEAD
 
         //移動制限
         Vector3 creentPos = transform.position;
@@ -42,6 +44,8 @@ public class CharController : MonoBehaviour
         creentPos.y = Mathf.Clamp(creentPos.y, -yLimit, yLimit);
         transform.position = creentPos;
 
+=======
+>>>>>>> origin/main
         //アニメーション
         if (Input.acceleration.y > this.threshold)
         {
@@ -70,7 +74,11 @@ public class CharController : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
             this.animator.speed = speed / 2.0f;
+=======
+        this.animator.speed = speed / 2.0f;
+>>>>>>> origin/main
     }
 
     //当たり判定
