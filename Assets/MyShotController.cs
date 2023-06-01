@@ -5,7 +5,7 @@ using UnityEngine;
 public class MyShotController : MonoBehaviour
 {
     public GameObject Enemy;
-    float speed = 0.30f;
+    float speed = 0.15f;
 
 
     void Update()

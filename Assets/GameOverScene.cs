@@ -7,8 +7,7 @@ public class GameOverScene : MonoBehaviour
 {
     void Update()
     {
-        //ゲームパットの０ボタンが押されたら
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire2"))
         {
             SceneManager.LoadScene("GameScene");
         }

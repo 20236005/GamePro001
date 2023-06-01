@@ -459,7 +459,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'GameOver
 
-    Button 0 start'
+    Button 1 start'
 --- !u!222 &1804361503
 CanvasRenderer:
   m_ObjectHideFlags: 0

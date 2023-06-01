@@ -10,21 +10,16 @@ public class CharController : MonoBehaviour
     public GameObject Enemy;
     GameObject cher;
 
-    float span = 0.25f;
-    float delta = 0;
-    float threshold = 0.2f;
-
-    float threshold = 0.2f;
-
     float xLimit = 32.0f;
     float yLimit = 13.0f;
 
-    Animator animator;
+    Animator anim;
 
     void Start()
     {
-        this.animator = GetComponent<Animator>();
+       anim = GetComponent<Animator>();
         this.cher = GameObject.Find("MyChar");
+        Application.targetFrameRate = 300;
     }
 
     void Update()
@@ -36,49 +31,41 @@ public class CharController : MonoBehaviour
         dir.y = Input.GetAxisRaw("Vertical");
         transform.position += dir.normalized * speed;
 
-<<<<<<< HEAD
-
         //移動制限
         Vector3 creentPos = transform.position;
         creentPos.x = Mathf.Clamp(creentPos.x, -xLimit, xLimit);
         creentPos.y = Mathf.Clamp(creentPos.y, -yLimit, yLimit);
         transform.position = creentPos;
 
-=======
->>>>>>> origin/main
         //アニメーション
-        if (Input.acceleration.y > this.threshold)
-        {
-            this.animator.SetTrigger("Left Trigger");
-        }
+        float y = Input.GetAxisRaw("Vertical");
 
-        if (Input.acceleration.y > - this.threshold)
+        if (y == 0)
         {
-            this.animator.SetTrigger("Rigth Trigger");
+            anim.Play("Player");
+        }
+        else if (y == 1)
+        {
+            anim.Play("PlayerL");
+        }
+        else
+        {
+            anim.Play("PlayerR");
         }
 
         // プレイヤーの位置
         Vector3 PlayerPos = this.cher.transform.position;
         transform.position = new Vector3(PlayerPos.x, PlayerPos.y, 0);
 
-        this.delta += Time.deltaTime;
-
         //クリックしたらShotを打つ
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (this.delta > this.span)
-            {
-                this.delta = 0;
                 GameObject go = Instantiate(Myshot);
                 go.transform.position = new Vector3(PlayerPos.x, PlayerPos.y, 0);
-            }
         }
+        
+        anim.speed = speed / 2.0f;
 
-<<<<<<< HEAD
-            this.animator.speed = speed / 2.0f;
-=======
-        this.animator.speed = speed / 2.0f;
->>>>>>> origin/main
     }
 
     //当たり判定
