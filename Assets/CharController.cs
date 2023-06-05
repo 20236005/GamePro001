@@ -76,5 +76,10 @@ public class CharController : MonoBehaviour
             GameObject director = GameObject.Find("GameDirecter");
             director.GetComponent<GameDirecter>().DecreaseTime();
         }
+        if (other.gameObject.tag == "Boss Enemy")
+        {
+            GameObject director = GameObject.Find("GameDirecter");
+            director.GetComponent<GameDirecter>().DecreaseTime3();
+        }
     }
 }

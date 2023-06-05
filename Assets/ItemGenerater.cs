@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemGenerater : MonoBehaviour
 {
     public GameObject Item;
-    float span = 0.3f;
+    float span = 5f;
     float delta = 0;
 
     void Update()

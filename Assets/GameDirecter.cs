@@ -22,13 +22,22 @@ public class GameDirecter : MonoBehaviour
         //“G‚ÆÕ“Ë‚µ‚½‚çTimegauge‚ğŒ¸‚ç‚·
         this.Timegaugi.GetComponent<Image>().fillAmount -= 0.25f;
     }
-    
+    public void DecreaseTime2()
+    {
+        //Player‚ÆÕ“Ë‚µ‚½‚çTimegauge‚ğ‘‚â‚·
+        this.Timegaugi.GetComponent<Image>().fillAmount += 0.25f;
+    }
+    public void DecreaseTime3()
+    {
+        //“G‚ÆÕ“Ë‚µ‚½‚çTimegauge‚ğŒ¸‚ç‚·
+        this.Timegaugi.GetComponent<Image>().fillAmount -= 0.5f;
+    }
+
     void Update()
     {
         if (this.Timegaugi.GetComponent<Image>().fillAmount == 0 )
         {
-            GameObject ScoreDirecter = GameObject.Find("ScoreDirecter");
-            ScoreDirecter.GetComponent<ScoreDirecter>().DecreaseTime();
+            SceneManager.LoadScene("GameOverScene");
         }   
     }
 }

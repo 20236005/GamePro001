@@ -30,5 +30,9 @@ public class MyShotController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (other.gameObject.tag == "Boos Enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }
